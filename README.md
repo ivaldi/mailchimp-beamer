@@ -3,10 +3,10 @@ mailchimp-beamer
 
 WordPress plugin to send posts to a MailChimp newsletter
 
-*Installation*
+#Installation
 Simply add the 'ivaldi-mailchimp-beamer' folder to the plugins folder of your WordPress installation
 
-*Usage*
+#Usage
 - Fill in the required fields in the form
 - Select the message you want to include in your newsletter
 - Press send
@@ -14,6 +14,6 @@ Simply add the 'ivaldi-mailchimp-beamer' folder to the plugins folder of your Wo
 - Reply with 'Send'
 - Your newsletter will be send to your MailChimp list
 
-*Modification*
+#Modification
 - Template.html is the overall template for the newsletter. Here you can change the layout/style of your newsletter.
 - Post.html is the partial template for each individual post. Here you can change the layout/style of each post.
