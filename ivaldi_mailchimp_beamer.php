@@ -59,9 +59,9 @@ function imb_admin() {
 			
 			$template = file_get_contents('../wp-content/plugins/ivaldi_mailchimp_beamer/post.html');		
 			
-			$template = str_replace('<%%title%%>',get_the_title($id),$template);
-			$template = str_replace('<%%content%%>',get_the_excerpt($id),$template);
-			$template = str_replace('<%%permalink%%>',get_permalink($id)) ,$template);
+			$template = str_replace('<%%title%%>',get_the_title($id), $template);
+			$template = str_replace('<%%content%%>',get_the_excerpt($id), $template);
+			$template = str_replace('<%%permalink%%>',get_permalink($id), $template);
 			
 			if(has_post_thumbnail( $id)){
 				$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'thumbnail' );
@@ -127,7 +127,7 @@ function imb_admin() {
 	        		<th scope="row"><label>Email of sender:</label></th>
 	        	    <td>
 	        	    	<input type="text" name="sender" class="regular-text" value="<?php bloginfo('admin_email') ?>" />
-	        	    	<p class="description">The email of the sender of the newsletter. Make sure you enter an emailaddress on which you can recieve the confirmation email from MailChimp.</p>
+	        	    	<p class="description">The email of the sender of the newsletter. Make sure you enter an email address on which you can recieve the confirmation email from MailChimp.</p>
 	        	    </td>
 	        	</tr>
 	        	<tr valign="top">
