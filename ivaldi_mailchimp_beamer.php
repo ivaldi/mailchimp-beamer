@@ -132,11 +132,11 @@ function imb_admin() {
 	        	</tr>
 	        	<tr valign="top">
 	        		<th scope="row">
-	        			<label>MailChimp-list e-mailaddress:</label>
+	        			<label>MailChimp-list email address:</label>
 	        		</th>
 	        	    <td>
 	        	    	<input type="text" name="email" class="regular-text" />
-	        	    	<p class="description">The e-mailaddress of the MailChimp-list. Example: [unique code]@campaigns.mailchimp.com</p>
+	        	    	<p class="description">The email address of the MailChimp-list. Example: [unique code]@campaigns.mailchimp.com</p>
 	        	    </td>
 	        	</tr>
 	        </table>
