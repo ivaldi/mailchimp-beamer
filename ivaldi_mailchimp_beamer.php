@@ -3,7 +3,7 @@
 Plugin Name: Ivaldi MailChimp Beamer
 Plugin URI: http://ivaldi.nl
 Description: Send your news-items to a MailChimp newsletter.
-Version: 0.1
+Version: 1.1
 Author: Martijn Reijerse
 Author URI: http://ivaldi.nl
 License: MIT License
