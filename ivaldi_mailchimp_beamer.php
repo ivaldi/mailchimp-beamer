@@ -11,13 +11,28 @@ License: MIT License
 
 
 function imb_menu() {
-	add_menu_page('Ivaldi MailChimp Beamer', 'newsletter', 'publish_pages', 'imb_admin', 'imb_admin');
+	add_menu_page('Ivaldi MailChimp Beamer', 'Newsletter', 'publish_pages', 'imb_admin', 'imb_admin');
 }
 
 add_action('admin_menu', 'imb_menu');
 
 
 function hasErrors(array $data){	
+
+	if($data['order'] != '') {
+		$has_order = false;
+
+		foreach($data['order'] as $id => $order){
+			if($order != ''){
+				$has_order = true;
+			}
+		}
+
+		if($has_order == false) {
+			return true;
+		}
+	}
+
 	if(count($data) == 0 || (isValidEmail($data['email']) &&
 			isValidEmail($data['sender']) &&
 			$data['subject'] != '' &&
@@ -57,7 +72,7 @@ function imb_admin() {
 			$post = get_post($id);
 			setup_postdata($post);
 			
-			$template = file_get_contents('../wp-content/plugins/ivaldi_mailchimp_beamer/post.html');		
+			$template = file_get_contents(plugin_dir_path(__FILE__)."/post.html");		
 			
 			$template = str_replace('<%%title%%>',get_the_title($id), $template);
 			$template = str_replace('<%%content%%>',get_the_excerpt($id), $template);
@@ -76,6 +91,8 @@ function imb_admin() {
 		$html = str_replace('<%%posts%%>', $posts, $html);		
 		$html = str_replace('<%%date%%>', date_i18n(get_option('date_format'), time()), $html);
 		$html = str_replace('<%%subject%%>', $_POST['subject'], $html);
+		$html = str_replace('<%%sitename%%>', get_bloginfo('name'), $html);
+		$html = str_replace('<%%message%%>', $_POST['message'], $html);
 				
 		add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
 		$headers = 'From: '.$_POST['name'].' <'.$_POST['sender'].'>' . "\r\n";
@@ -137,6 +154,15 @@ function imb_admin() {
 	        	    <td>
 	        	    	<input type="text" name="email" class="regular-text" />
 	        	    	<p class="description">The email address of the MailChimp-list. Example: [unique code]@campaigns.mailchimp.com</p>
+	        	    </td>
+	        	</tr>
+	        	<tr valign="top">
+	        		<th scope="row">
+	        			<label>Personal message:</label>
+	        		</th>
+	        	    <td>
+	        	    	<?php wp_editor( '', 'message'); ?>
+	        	    	<p class="description">A personal message which will be displayed at the beginning of the newsletter.</p>
 	        	    </td>
 	        	</tr>
 	        </table>
